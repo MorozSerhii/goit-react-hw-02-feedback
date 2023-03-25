@@ -2,8 +2,9 @@ import { Section } from './Section/Section';
 import { Statistics } from './Statistics/Statistics';
 import { Component } from 'react';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Container, Message } from './App.styled';
+import { Container } from './App.styled';
 import { nanoid } from 'nanoid';
+import { Notification } from './Notification/Notification';
 export class App extends Component {
   state = {
     good: 0,
@@ -46,7 +47,7 @@ export class App extends Component {
               positivePercentage={this.countPositiveFeedbackPercentage}
             />
           ) : (
-            <Message>No Feedback</Message>
+            <Notification message={'There is no feedback'} />
           )}
         </Section>
       </Container>

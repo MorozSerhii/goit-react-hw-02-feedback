@@ -9,9 +9,3 @@ export const Container = styled.div`
   color: #010101;
   border: 1px solid black;
 `;
-export const Message = styled.p`
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  margin-top: 30px;
-`;
