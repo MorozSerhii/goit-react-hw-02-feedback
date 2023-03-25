@@ -1,8 +1,9 @@
-import { Section } from './Statistics/Section';
+import { Section } from './Section/Section';
 import { Statistics } from './Statistics/Statistics';
 import { Component } from 'react';
-import { FeedbackOptions } from './Statistics/FeedbackOptions';
-import { Container } from './App.styled';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Container, Message } from './App.styled';
+import { nanoid } from 'nanoid';
 export class App extends Component {
   state = {
     good: 0,
@@ -10,9 +11,9 @@ export class App extends Component {
     bad: 0,
   };
   options = [
-    { id: 1, name: 'good' },
-    { id: 2, name: 'neutral' },
-    { id: 3, name: 'bad' },
+    { id: nanoid(), name: 'good' },
+    { id: nanoid(), name: 'neutral' },
+    { id: nanoid(), name: 'bad' },
   ];
 
   handelClick = name =>
@@ -27,7 +28,6 @@ export class App extends Component {
   };
   countPositiveFeedbackPercentage = () =>
     Math.round((this.state.good / this.countTotalFeedback()) * 100) || 0;
-
   render() {
     return (
       <Container>
@@ -46,7 +46,7 @@ export class App extends Component {
               positivePercentage={this.countPositiveFeedbackPercentage}
             />
           ) : (
-            <p>No Feedback</p>
+            <Message>No Feedback</Message>
           )}
         </Section>
       </Container>
