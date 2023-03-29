@@ -1,28 +1,29 @@
 import { Btn, Wraper } from './FeedbackOptions.styled';
 import PropTypes from 'prop-types';
+import { nanoid } from 'nanoid';
 
 export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
+  const keys = Object.keys(options);
   return (
     <Wraper>
-      {options.map(({ id, name }) => (
+      {keys.map(key => (
         <Btn
-          key={id}
+          key={nanoid()}
           onClick={() => {
-            onLeaveFeedback(name);
+            onLeaveFeedback(key);
           }}
         >
-          {name}
+          {key}
         </Btn>
       ))}
     </Wraper>
   );
 };
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  options: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };

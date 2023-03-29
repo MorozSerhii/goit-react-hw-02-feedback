@@ -3,7 +3,6 @@ import { Statistics } from './Statistics/Statistics';
 import { Component } from 'react';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Container } from './App.styled';
-import { nanoid } from 'nanoid';
 import { Notification } from './Notification/Notification';
 export class App extends Component {
   state = {
@@ -11,11 +10,6 @@ export class App extends Component {
     neutral: 0,
     bad: 0,
   };
-  options = [
-    { id: nanoid(), name: 'good' },
-    { id: nanoid(), name: 'neutral' },
-    { id: nanoid(), name: 'bad' },
-  ];
 
   handelClick = name =>
     this.setState(prevState => {
@@ -35,7 +29,7 @@ export class App extends Component {
         <Section title="Please leave feedback">
           <FeedbackOptions
             onLeaveFeedback={this.handelClick}
-            options={this.options}
+            options={this.state}
           />
 
           {this.countTotalFeedback() > 0 ? (
